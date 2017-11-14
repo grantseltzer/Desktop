@@ -5,7 +5,6 @@ function chrome() {
         --rm \
         --security-opt seccomp=$HOME/.seccomp/chrome.json \
         --net=host \
-        --memory 512mb \
         --cpuset-cpus 0 \
         -e DISPLAY=unix$DISPLAY \
         -v $HOME/Downloads:$HOME/Downloads \
