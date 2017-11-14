@@ -1,0 +1,28 @@
+#!/bin/bash
+
+function chrome() {
+        docker run \
+        --rm \
+        --security-opt seccomp=$HOME/.seccomp/chrome.json \
+        --net=host \
+        --memory 512mb \
+        --cpuset-cpus 0 \
+        -e DISPLAY=unix$DISPLAY \
+        -v $HOME/Downloads:$HOME/Downloads \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        --group-add video \
+        --group-add audio \
+        --device /dev/dri \
+        --device /dev/snd \
+        --ipc='host' \
+        --name chrome \
+        -v $HOME/.chrome:/data \
+        grantseltzer/chrome:v0 \
+        /usr/bin/google-chrome --user-data-dir=/data
+}
+
+if [[ ! -d /$HOME/.chrome ]]; then
+	mkdir /$HOME/.chrome
+fi
+
+chrome
