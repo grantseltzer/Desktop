@@ -1,19 +1,26 @@
 #!/bin/bash
 
-function vscode() {
-	docker run \
-	-it \
-	--rm \
-	-e DISPLAY=unix$DISPLAY \
-	-e GOPATH=/home/grant/go \
-	-v /home/grant/go:/home/grant/go \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	--group-add video \
-	--device /dev/dri \
-	--device /dev/snd \
-	--name code \
-	grantseltzer/code:v0 \
-	zsh
-}
 
+# Need to run check for multiple instances of code, if so increment counter for the name
+
+
+code_num=$(docker ps | grep "grantseltzer/code:v0" | wc -l)
+
+function vscode() {
+        docker run \
+        -it \
+        --rm \
+        -e DISPLAY=unix$DISPLAY \
+        -e GOPATH=/home/grant/go \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v /home/grant/go:/home/grant/go \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        --group-add video \
+        --device /dev/dri \
+        --device /dev/snd \
+	--name code$code_num \
+        grantseltzer/code:v0 \
+        zsh
+}
+echo "Starting code:$code_num"
 vscode
