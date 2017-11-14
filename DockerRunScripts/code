@@ -5,8 +5,8 @@ function vscode() {
 	-it \
 	--rm \
 	-e DISPLAY=unix$DISPLAY \
-	-e GOPATH=/home/go \
-	-v /home/go:/home/go \
+	-e GOPATH=/home/grant/go \
+	-v /home/grant/go:/home/grant/go \
 	-v /tmp/.X11-unix:/tmp/.X11-unix \
 	--group-add video \
 	--device /dev/dri \
