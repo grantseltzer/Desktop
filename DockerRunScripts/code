@@ -12,7 +12,7 @@ function vscode() {
 	--device /dev/dri \
 	--device /dev/snd \
 	--name code \
-	grantseltzer/vscode:v0 \
+	grantseltzer/code:v0 \
 	zsh
 }
 
