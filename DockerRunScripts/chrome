@@ -3,7 +3,7 @@
 function chrome() {
         docker run \
         --rm \
-        --security-opt seccomp=$HOME/.seccomp/chrome.json \
+        --privileged \
         --net=host \
         --cpuset-cpus 0 \
         -e DISPLAY=unix$DISPLAY \
