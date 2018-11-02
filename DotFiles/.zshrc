@@ -2,17 +2,14 @@ export ZSH=/home/grant/.oh-my-zsh
 export GPG_TTY=$(tty)
 export GOPATH=/home/grant/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-export KUBECONFIG=/home/grant/.kubeconfigs/green-engineer-grant
 
 function c() {
 	builtin cd $@ && ls
 }
 
+# utility aliases
 alias disas='objdump -M intel -d'
-
-alias capsule8=$GOPATH/src/github.com/capsule8/c8/capsule8-cli/cmd/dist/capsule8-cli
-export C8_ROOT=$GOPATH/src/github.com/capsule8/c8
-export PATH=$PATH:$C8_ROOT/scripts
+alias synctime="sudo ntpdate north-america.pool.ntp.org"
 
 # Git aliases
 alias gs="git status"
@@ -28,9 +25,11 @@ alias gps="git push"
 alias dcu="docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs sudo docker rm ;docker system prune -af"
 alias dps="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Status}}\""
 
-
 ZSH_THEME="seltzer"
 
+# Source non-standard rc files
+source ~/.zshrc_temp
+source ~/.zshrc_c8
 
 # Completion: 
 # CASE_SENSITIVE="true"
@@ -77,12 +76,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 
 # GPG/YubiKey/Git initialization
 #
@@ -90,5 +83,3 @@ source $ZSH/oh-my-zsh.sh
 if [ -f $HOME/.yubikeys/etc/bashrc ]; then
 	source $HOME/.yubikeys/etc/bashrc
 fi
-
-
