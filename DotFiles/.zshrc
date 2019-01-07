@@ -7,6 +7,8 @@ function c() {
 	builtin cd $@ && ls
 }
 
+alias rcon='docker run -e DISABLE_AUTH=true -e ROOT=true -p 8787:8787 -v /home/grant/R:/home/rstudio/R docker.io/rocker/tidyverse'
+
 # utility aliases
 alias disas='objdump -M intel -d'
 alias synctime="sudo ntpdate north-america.pool.ntp.org"
