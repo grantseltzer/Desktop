@@ -7,8 +7,9 @@ function c() {
 	builtin cd $@ && ls
 }
 
-alias rcon='docker run -e DISABLE_AUTH=true -e ROOT=true -p 8787:8787 -v /home/grant/R:/home/rstudio/R docker.io/rocker/tidyverse'
-
+alias rcon='docker run --rm -e DISABLE_AUTH=true -e ROOT=true -p 8787:8787 -v /home/grant/R:/home/rstudio/R docker.io/rocker/tidyverse'
+alias rbook='docker run --rm -v /home/grant/R:/home/jovyan/R --net=host jupyter/r-notebook'
+	
 # utility aliases
 alias disas='objdump -M intel -d'
 alias synctime="sudo ntpdate north-america.pool.ntp.org"
@@ -31,7 +32,6 @@ ZSH_THEME="seltzer"
 
 # Source non-standard rc files
 source ~/.zshrc_temp
-source ~/.zshrc_c8
 
 # Completion: 
 # CASE_SENSITIVE="true"
@@ -78,10 +78,3 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# GPG/YubiKey/Git initialization
-#
-#
-if [ -f $HOME/.yubikeys/etc/bashrc ]; then
-	source $HOME/.yubikeys/etc/bashrc
-fi
