@@ -2,6 +2,7 @@ export ZSH=/home/grant/.oh-my-zsh
 export GPG_TTY=$(tty)
 export GOPATH=/home/grant/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export GO111MODULE=on
 
 function c() {
 	builtin cd $@ && ls
