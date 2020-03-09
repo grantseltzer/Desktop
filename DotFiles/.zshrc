@@ -8,6 +8,12 @@ function c() {
 	builtin cd $@ && ls
 }
 
+function pwgen() {
+        < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$@};echo;
+}
+
+alias xpn='expressvpn'
+
 alias rcon='docker run --rm -e DISABLE_AUTH=true -e ROOT=true -p 8787:8787 -v /home/grant/R:/home/rstudio/R docker.io/rocker/tidyverse'
 alias rbook='docker run --rm -v /home/grant/R:/home/jovyan/R --net=host jupyter/r-notebook'
 	
