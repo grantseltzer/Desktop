@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Chrome
-Terminal=false
-Exec=/usr/bin/chrome
-Icon=/home/grant/.local/share/icons/hicolor/48x48/apps/chrome.png
-Categories=Network;
