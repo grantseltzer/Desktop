@@ -15,6 +15,6 @@ Vagrant.configure("2") do |config|
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     curl https://raw.githubusercontent.com/grantseltzer/seltzer.zsh-theme/master/seltzer.zsh-theme > $HOME/.oh-my-zsh/themes/seltzer.zsh-theme
     curl https://raw.githubusercontent.com/grantseltzer/Desktop/master/.zshrc > $HOME/.zshrc
-    sudo chsh -s $(which zsh)
+    sudo chsh -s $(which zsh) vagrant
   SCRIPT
 end
