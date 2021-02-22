@@ -11,6 +11,7 @@ function pwgen() {
         < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$@};echo;
 }
 
+alias synctime="sudo ntpdate north-america.pool.ntp.org"
 alias disas='objdump -M intel -d'
 alias gs="git status"
 alias dps="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Status}}\""
