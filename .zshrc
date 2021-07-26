@@ -14,6 +14,7 @@ function pwgen() {
 alias synctime="sudo ntpdate north-america.pool.ntp.org"
 alias disas='objdump -M intel -d'
 alias gs="git status"
+alias gd='git diff'
 alias dps="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Status}}\""
 
 ZSH_THEME="seltzer"
