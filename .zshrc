@@ -11,17 +11,27 @@ function pwgen() {
         < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$@};echo;
 }
 
+function shellgen() {
+	objdump -d $@ | grep -Po '\s\K[a-f0-9]{2}(?=\s)' | sed 's/^/\\x/g' | perl -pe 's/\r?\n//' | sed 's/$/\n/'
+}
+
 alias synctime="sudo ntpdate north-america.pool.ntp.org"
 alias disas='objdump -M intel -d'
 alias gs="git status"
 alias gd='git diff'
 alias dps="docker ps -a --format \"table {{.ID}}\t{{.Names}}\t{{.Status}}\""
+alias blob='echo ༼ つ ◕_◕ ༽つ'
+
+
 
 ZSH_THEME="seltzer"
 
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 
+function releasenote() {
+	git log --pretty="%h - %s (%an)" $@..HEAD
+}
 function provision() {
 	sudo dnf update -y
 	sudo dnf install -y make zsh go libbpf ntpdate libbpf-devel clang podman util-linux-user glibc-devel.i686 strace glibc-static zlib-static man-pages llvm llvm-devel git-email mutt openssl-devel tmux open-policy-agent kernel-devel-$(uname -r)
